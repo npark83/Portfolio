@@ -252,10 +252,10 @@
   .video-meta p{ font-size:14px; color:var(--text-muted); margin:0; }
 
   .photo-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:32px 28px;
-  }
+  display:grid;
+  grid-template-columns:repeat(auto-fill, 160px);
+  gap:32px 28px;
+}
 
   .photo-card{}
 
@@ -586,7 +586,7 @@
   ];
 
   const modelingPhotos = [
-    { credit: "EightFive Studios", url: "http://eightfivestudios.com/" }
+    { credit: "EightFive Studios", url: "http://eightfivestudios.com/", image: "Headshot 3.jpg" }
   ];
 
   const headshotImages = [
