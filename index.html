@@ -617,17 +617,19 @@
   }
 
   function renderPhotoGrid(items){
-    const el = document.getElementById('modeling-grid');
-    el.innerHTML = items.map(p => `
-      <div class="photo-card">
-        <div class="photo-frame">Replace with photo</div>
-        <div class="photo-caption">
-          <div class="credit">${p.credit}</div>
-          <a href="${p.url}" target="_blank" rel="noopener">view usage ↗</a>
-        </div>
+  const el = document.getElementById('modeling-grid');
+  el.innerHTML = items.map(p => `
+    <div class="photo-card">
+      <div class="photo-frame" style="padding:0;">
+        <img src="${encodeURI(p.image)}" alt="${p.credit}" style="width:100%; height:100%; object-fit:cover;">
       </div>
-    `).join('');
-  }
+      <div class="photo-caption">
+        <div class="credit">${p.credit}</div>
+        <a href="${p.url}" target="_blank" rel="noopener">view usage ↗</a>
+      </div>
+    </div>
+  `).join('');
+}
 
   function renderHeadshots(images){
     const el = document.getElementById('headshots-grid');
