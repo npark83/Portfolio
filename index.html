@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Actor · Model · Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14120f;
+    --bg-panel:#1b1814;
+    --bg-card:#211d17;
+    --accent:#e8a33d;
+    --accent-dim:#b97f2e;
+    --text:#f2ede4;
+    --text-muted:#9c9488;
+    --line:#3a362e;
+    --serif:'Fraunces', serif;
+    --sans:'Work Sans', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  img{ max-width:100%; display:block; }
+
+  /* ---------- top nav ---------- */
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(20,18,15,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav-inner{
+    max-width:1100px;
+    margin:0 auto;
+    padding:20px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+
+  .brand{
+    font-family:var(--serif);
+    font-size:20px;
+    font-style:italic;
+    font-weight:500;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  nav.tabs{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+
+  nav.tabs button{
+    background:none;
+    border:none;
+    color:var(--text-muted);
+    font-family:var(--sans);
+    font-size:15px;
+    font-weight:400;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    padding:6px 0;
+    position:relative;
+    transition:color 0.2s ease;
+  }
+
+  nav.tabs button:hover{ color:var(--text); }
+
+  nav.tabs button.active{ color:var(--text); }
+
+  nav.tabs button.active::after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:2px;
+    background:var(--accent);
+  }
+
+  nav.tabs button:focus-visible{
+    outline:1px solid var(--accent);
+    outline-offset:4px;
+  }
+
+  /* ---------- shared layout ---------- */
+
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:64px 32px 96px;
+  }
+
+  section{ display:none; }
+  section.active{ display:block; }
+
+  .eyebrow{
+    color:var(--accent);
+    font-size:14px;
+    font-family:var(--serif);
+    font-style:italic;
+    margin:0 0 8px;
+  }
+
+  h1,h2,h3{ font-family:var(--serif); font-weight:500; margin:0; }
+
+  .section-head{ margin-bottom:48px; max-width:640px; }
+  .section-head h2{ font-size:34px; line-height:1.2; }
+  .section-head p{ color:var(--text-muted); margin-top:14px; font-size:16px; max-width:60ch; }
+
+  /* ---------- home ---------- */
+
+  .hero{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:56px;
+    align-items:start;
+  }
+
+  .portrait-frame{
+    position:relative;
+    aspect-ratio:3/4;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+
+  .portrait-frame .placeholder-fill{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    color:var(--text-muted);
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .portrait-frame::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.45);
+    pointer-events:none;
+  }
+
+  .hero-copy h1{
+    font-size:52px;
+    line-height:1.08;
+    margin-bottom:6px;
+  }
+
+  .hero-role{
+    color:var(--accent);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    margin-bottom:28px;
+  }
+
+  .hero-copy p.bio{
+    font-size:16px;
+    color:var(--text-muted);
+    max-width:56ch;
+    margin-bottom:32px;
+  }
+
+  .profile-links{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    margin-bottom:36px;
+  }
+
+  .profile-links a{
+    text-decoration:none;
+    border-bottom:1px solid var(--accent-dim);
+    padding-bottom:2px;
+    font-size:15px;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .profile-links a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  .imdb-note{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    color:var(--text-muted);
+    font-size:14px;
+    max-width:56ch;
+  }
+
+  .imdb-note strong{ color:var(--text); font-weight:500; }
+
+  /* ---------- video grid (acting / producing) ---------- */
+
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:28px;
+  }
+
+  .video-card{
+    text-decoration:none;
+    display:block;
+  }
+
+  .video-thumb{
+    position:relative;
+    aspect-ratio:16/9;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
+  .video-thumb .play-icon{
+    width:52px;
+    height:52px;
+    border:1px solid var(--accent);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.2s ease;
+  }
+
+  .video-card:hover .play-icon{ background:rgba(232,163,61,0.12); }
+
+  .video-thumb .play-icon svg{ width:16px; height:16px; fill:var(--accent); margin-left:3px; }
+
+  .video-thumb .placeholder-label{
+    position:absolute;
+    bottom:10px;
+    left:12px;
+    right:12px;
+    font-size:11px;
+    color:var(--text-muted);
+    letter-spacing:0.03em;
+  }
+
+  .video-meta{ padding-top:14px; }
+
+  .video-meta h3{ font-size:18px; font-weight:500; margin-bottom:4px; }
+
+  .video-meta p{ font-size:14px; color:var(--text-muted); margin:0; }
+
+  /* ---------- modeling grid ---------- */
+
+  .photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:32px 28px;
+  }
+
+  .photo-card{}
+
+  .photo-frame{
+    aspect-ratio:4/5;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    color:var(--text-muted);
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .photo-caption{ padding-top:12px; }
+
+  .photo-caption .credit{ font-size:14px; color:var(--text); margin-bottom:2px; }
+
+  .photo-caption a{
+    font-size:13px;
+    color:var(--text-muted);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+
+  .photo-caption a:hover{ color:var(--accent); border-color:var(--accent-dim); }
+
+  /* ---------- resume ---------- */
+
+  .resume-block{ margin-bottom:44px; }
+
+  .resume-block h3{
+    font-size:13px;
+    text-transform:none;
+    letter-spacing:0.04em;
+    color:var(--accent);
+    font-family:var(--sans);
+    font-weight:500;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .resume-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .resume-row:last-child{ border-bottom:none; }
+
+  .resume-row .title{ font-size:16px; font-weight:500; }
+
+  .resume-row .detail{ font-size:14px; color:var(--text-muted); margin-top:2px; }
+
+  .resume-row .detail a{
+    color:var(--text-muted);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+  }
+
+  .resume-row .detail a:hover{ color:var(--accent); text-decoration-color:var(--accent-dim); }
+
+  .resume-row .year{ font-size:14px; color:var(--text-muted); white-space:nowrap; padding-top:2px; }
+
+  .resume-download{ margin-top:32px; }
+
+  .resume-download a{
+    display:inline-block;
+    border:1px solid var(--accent-dim);
+    color:var(--text);
+    text-decoration:none;
+    font-size:14px;
+    padding:10px 20px;
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .resume-download a:hover{ background:rgba(232,163,61,0.1); border-color:var(--accent); }
+
+  /* ---------- headshots ---------- */
+
+  .headshot-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:28px;
+  }
+
+  .headshot-frame{
+    aspect-ratio:4/5;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    color:var(--text-muted);
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:28px 32px;
+    text-align:center;
+    color:var(--text-muted);
+    font-size:13px;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width:760px){
+    .hero{ grid-template-columns:1fr; }
+    .portrait-frame{ max-width:280px; }
+    .hero-copy h1{ font-size:38px; }
+    nav.tabs{ gap:18px; }
+    main{ padding:40px 20px 72px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="#home">Your Name</a>
+    <nav class="tabs">
+      <button data-tab="home" class="active">Home</button>
+      <button data-tab="acting">Acting</button>
+      <button data-tab="modeling">Modeling</button>
+      <button data-tab="producing">Producing / directing</button>
+      <button data-tab="resume">Resume</button>
+      <button data-tab="headshots">Headshots</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="active">
+    <div class="hero">
+      <div class="portrait-frame">
+        <div class="placeholder-fill">
+          Replace with your headshot<br>(portrait, 3:4 ratio works best)
+        </div>
+      </div>
+      <div class="hero-copy">
+        <h1>Your Name</h1>
+        <p class="hero-role">Actor — Model — Producer / Director</p>
+        <p class="bio">
+          Write a short, natural bio here — a few sentences on who you are,
+          where you're based, your training or background, and what kind of
+          work you're drawn to. Keep it to a short paragraph; the tabs above
+          do the rest of the talking.
+        </p>
+        <div class="profile-links">
+          <a href="#" target="_blank" rel="noopener">Backstage profile</a>
+          <a href="#" target="_blank" rel="noopener">Actors Access profile</a>
+        </div>
+        <div class="imdb-note">
+          <strong>IMDb</strong> — once your credits qualify, add your IMDb link here.
+          Until then, this section can stay as a placeholder or be removed.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ACTING ===================== -->
+  <section id="acting">
+    <div class="section-head">
+      <p class="eyebrow">Reel & scenes</p>
+      <h2>Acting</h2>
+      <p>Video previews below link out to YouTube. Replace each thumbnail, title, and link with your own.</p>
+    </div>
+    <div class="video-grid" id="acting-grid"></div>
+  </section>
+
+  <!-- ===================== MODELING ===================== -->
+  <section id="modeling">
+    <div class="section-head">
+      <p class="eyebrow">Tearsheets</p>
+      <h2>Modeling</h2>
+      <p>Each image links out to the site or campaign it was used for. Swap in your own photos and links below.</p>
+    </div>
+    <div class="photo-grid" id="modeling-grid"></div>
+  </section>
+
+  <!-- ===================== PRODUCING / DIRECTING ===================== -->
+  <section id="producing">
+    <div class="section-head">
+      <p class="eyebrow">Behind the camera</p>
+      <h2>Producing / directing</h2>
+      <p>Same format as Acting — replace with your own project links and thumbnails.</p>
+    </div>
+    <div class="video-grid" id="producing-grid"></div>
+  </section>
+
+  <!-- ===================== RESUME ===================== -->
+  <section id="resume">
+    <div class="section-head">
+      <p class="eyebrow">Curriculum vitae</p>
+      <h2>Resume</h2>
+      <p>Standard resume format — every credit or line item can link out to a trailer, project page, or reference.</p>
+    </div>
+
+    <div class="resume-block">
+      <h3>Acting</h3>
+      <div class="resume-row">
+        <div>
+          <div class="title">Role Name — Project Title</div>
+          <div class="detail">Director/Studio · <a href="#" target="_blank" rel="noopener">watch clip</a></div>
+        </div>
+        <div class="year">2026</div>
+      </div>
+      <div class="resume-row">
+        <div>
+          <div class="title">Role Name — Project Title</div>
+          <div class="detail">Director/Studio · <a href="#" target="_blank" rel="noopener">watch clip</a></div>
+        </div>
+        <div class="year">2025</div>
+      </div>
+    </div>
+
+    <div class="resume-block">
+      <h3>Producing / directing</h3>
+      <div class="resume-row">
+        <div>
+          <div class="title">Project Title — Role (Producer/Director)</div>
+          <div class="detail"><a href="#" target="_blank" rel="noopener">watch trailer</a></div>
+        </div>
+        <div class="year">2025</div>
+      </div>
+    </div>
+
+    <div class="resume-block">
+      <h3>Training</h3>
+      <div class="resume-row">
+        <div>
+          <div class="title">Program / class name</div>
+          <div class="detail">Institution or coach name</div>
+        </div>
+        <div class="year">2023–24</div>
+      </div>
+    </div>
+
+    <div class="resume-block">
+      <h3>Skills</h3>
+      <div class="resume-row">
+        <div>
+          <div class="title">Special skills, accents, languages, athletics, etc.</div>
+          <div class="detail">List them out here, comma separated.</div>
+        </div>
+        <div class="year"></div>
+      </div>
+    </div>
+
+    <div class="resume-download">
+      <a href="#" target="_blank" rel="noopener">Download PDF resume</a>
+    </div>
+  </section>
+
+  <!-- ===================== HEADSHOTS ===================== -->
+  <section id="headshots">
+    <div class="section-head">
+      <p class="eyebrow">Gallery</p>
+      <h2>Headshots</h2>
+      <p>A clean grid of your headshots — no captions needed, just the images.</p>
+    </div>
+    <div class="headshot-grid" id="headshots-grid"></div>
+  </section>
+
+</main>
+
+<footer>
+  Your Name — updated 2026 · Site built by hand, hosted on GitHub Pages
+</footer>
+
+<script>
+  /* ============================================================
+     EDIT YOUR CONTENT HERE — everything below is placeholder data.
+     ============================================================ */
+
+  // Acting reel — one entry per video
+  const actingVideos = [
+    { title: "Scene title or project name", note: "Role — Project (Year)", url: "https://www.youtube.com/" },
+    { title: "Scene title or project name", note: "Role — Project (Year)", url: "https://www.youtube.com/" },
+    { title: "Scene title or project name", note: "Role — Project (Year)", url: "https://www.youtube.com/" }
+  ];
+
+  // Producing / directing reel — same format as acting
+  const producingVideos = [
+    { title: "Project title", note: "Producer/Director (Year)", url: "https://www.youtube.com/" },
+    { title: "Project title", note: "Producer/Director (Year)", url: "https://www.youtube.com/" }
+  ];
+
+  // Modeling — one entry per photo. "url" should point to the site/campaign it ran on.
+  const modelingPhotos = [
+    { credit: "Photographer or brand name", url: "https://example.com/" },
+    { credit: "Photographer or brand name", url: "https://example.com/" },
+    { credit: "Photographer or brand name", url: "https://example.com/" },
+    { credit: "Photographer or brand name", url: "https://example.com/" }
+  ];
+
+  // Headshots — just needs a label; add real <img> tags when you have files
+  const headshotCount = 4;
+
+  /* ============================================================
+     Rendering — no need to edit below this line.
+     ============================================================ */
+
+  function playIconSVG(){
+    return '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  }
+
+  function renderVideoGrid(containerId, items){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(v => `
+      <a class="video-card" href="${v.url}" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <div class="play-icon">${playIconSVG()}</div>
+          <div class="placeholder-label">Replace with YouTube thumbnail</div>
+        </div>
+        <div class="video-meta">
+          <h3>${v.title}</h3>
+          <p>${v.note}</p>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function renderPhotoGrid(items){
+    const el = document.getElementById('modeling-grid');
+    el.innerHTML = items.map(p => `
+      <div class="photo-card">
+        <div class="photo-frame">Replace with photo</div>
+        <div class="photo-caption">
+          <div class="credit">${p.credit}</div>
+          <a href="${p.url}" target="_blank" rel="noopener">view usage ↗</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderHeadshots(count){
+    const el = document.getElementById('headshots-grid');
+    let html = '';
+    for (let i = 1; i <= count; i++){
+      html += `<div class="headshot-frame">Headshot ${i}</div>`;
+    }
+    el.innerHTML = html;
+  }
+
+  renderVideoGrid('acting-grid', actingVideos);
+  renderVideoGrid('producing-grid', producingVideos);
+  renderPhotoGrid(modelingPhotos);
+  renderHeadshots(headshotCount);
+
+  /* ---------- tab switching ---------- */
+
+  const buttons = document.querySelectorAll('nav.tabs button');
+  const sections = document.querySelectorAll('main > section');
+
+  function showTab(name, updateHash){
+    sections.forEach(s => s.classList.toggle('active', s.id === name));
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    if (updateHash) history.replaceState(null, '', '#' + name);
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => showTab(btn.dataset.tab, true));
+  });
+
+  const initial = window.location.hash.replace('#', '');
+  const validTabs = Array.from(sections).map(s => s.id);
+  showTab(validTabs.includes(initial) ? initial : 'home', false);
+</script>
+
+</body>
+</html>
