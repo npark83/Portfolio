@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name — Actor · Model · Producer</title>
+<title>Nicole Park — Actor · Model · Producer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -38,8 +38,6 @@
   a{ color:inherit; }
 
   img{ max-width:100%; display:block; }
-
-  /* ---------- top nav ---------- */
 
   header{
     position:sticky;
@@ -110,8 +108,6 @@
     outline-offset:4px;
   }
 
-  /* ---------- shared layout ---------- */
-
   main{
     max-width:1100px;
     margin:0 auto;
@@ -134,8 +130,6 @@
   .section-head{ margin-bottom:48px; max-width:640px; }
   .section-head h2{ font-size:34px; line-height:1.2; }
   .section-head p{ color:var(--text-muted); margin-top:14px; font-size:16px; max-width:60ch; }
-
-  /* ---------- home ---------- */
 
   .hero{
     display:grid;
@@ -214,8 +208,6 @@
     border-color:var(--accent);
   }
 
-/* ---------- video grid (acting / producing) ---------- */
-
   .video-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
@@ -253,23 +245,11 @@
 
   .video-thumb .play-icon svg{ width:16px; height:16px; fill:var(--accent); margin-left:3px; }
 
-  .video-thumb .placeholder-label{
-    position:absolute;
-    bottom:10px;
-    left:12px;
-    right:12px;
-    font-size:11px;
-    color:var(--text-muted);
-    letter-spacing:0.03em;
-  }
-
   .video-meta{ padding-top:14px; }
 
   .video-meta h3{ font-size:18px; font-weight:500; margin-bottom:4px; }
 
   .video-meta p{ font-size:14px; color:var(--text-muted); margin:0; }
-
-  /* ---------- modeling grid ---------- */
 
   .photo-grid{
     display:grid;
@@ -305,8 +285,6 @@
   }
 
   .photo-caption a:hover{ color:var(--accent); border-color:var(--accent-dim); }
-
-  /* ---------- resume ---------- */
 
   .resume-block{ margin-bottom:44px; }
 
@@ -361,8 +339,6 @@
 
   .resume-download a:hover{ background:rgba(168,121,10,0.08); border-color:var(--accent); }
 
-  /* ---------- headshots ---------- */
-
   .headshot-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
@@ -383,8 +359,6 @@
     line-height:1.6;
   }
 
-  /* ---------- footer ---------- */
-
   footer{
     border-top:1px solid var(--line);
     padding:28px 32px;
@@ -392,8 +366,6 @@
     color:var(--text-muted);
     font-size:13px;
   }
-
-  /* ---------- responsive ---------- */
 
   @media (max-width:760px){
     .hero{ grid-template-columns:1fr; }
@@ -422,14 +394,13 @@
 
 <main>
 
-  <!-- ===================== HOME ===================== -->
   <section id="home" class="active">
     <div class="hero">
-      <div class="portrait-frame">
-        <div class="placeholder-fill">
-          Replace with your headshot<br>(portrait, 3:4 ratio works best)
-        </div>
-      </div>
+
+     <div class="portrait-frame">
+        <img src="Headshot 2.JPG" alt="Nicole Park" style="width:100%; height:100%; object-fit:cover;">
+     </div>
+
       <div class="hero-copy">
         <h1>Nicole Park</h1>
         <p class="hero-role">Actor — Model — Producer</p>
@@ -449,7 +420,6 @@
     </div>
   </section>
 
-  <!-- ===================== ACTING ===================== -->
   <section id="acting">
     <div class="section-head">
       <p class="eyebrow">Reel & scenes</p>
@@ -458,7 +428,6 @@
     <div class="video-grid" id="acting-grid"></div>
   </section>
 
-  <!-- ===================== MODELING ===================== -->
   <section id="modeling">
     <div class="section-head">
       <p class="eyebrow">Tearsheets</p>
@@ -467,7 +436,6 @@
     <div class="photo-grid" id="modeling-grid"></div>
   </section>
 
-  <!-- ===================== PRODUCING / DIRECTING ===================== -->
   <section id="producing">
     <div class="section-head">
       <p class="eyebrow">Behind the camera</p>
@@ -476,7 +444,6 @@
     <div class="video-grid" id="producing-grid"></div>
   </section>
 
-  <!-- ===================== RESUME ===================== -->
   <section id="resume">
     <div class="section-head">
       <p class="eyebrow">Curriculum vitae</p>
@@ -595,7 +562,6 @@
     </div>
   </section>
 
-  <!-- ===================== HEADSHOTS ===================== -->
   <section id="headshots">
     <div class="section-head">
       <p class="eyebrow">Gallery</p>
@@ -611,36 +577,24 @@
 </footer>
 
 <script>
-  /* ============================================================
-     EDIT YOUR CONTENT HERE — everything below is placeholder data.
-     ============================================================ */
-
-  // Acting reel — one entry per video
   const actingVideos = [
-    { title: "Check-Out", note: "Lead — Short Film (2026)", url: "https://www.youtube.com/watch?v=_LllsLFTCJ4" }
+    { title: "Check-Out", note: "Lead — Short Film (2026)", url: "https://www.youtube.com/watch?v=_LllsLFTCJ4", thumb: "https://img.youtube.com/vi/_LllsLFTCJ4/hqdefault.jpg" }
   ];
 
-  // Producing / directing reel — same format as acting
   const producingVideos = [
-    { title: "That You Were Here", note: "Director — Short Film (2021)", url: "https://youtu.be/rTktGFppBOg?si=Cw1cPgEdnD9QCe2A" }
+    { title: "That You Were Here", note: "Director — Short Film (2021)", url: "https://youtu.be/rTktGFppBOg?si=Cw1cPgEdnD9QCe2A", thumb: "https://img.youtube.com/vi/rTktGFppBOg/hqdefault.jpg" }
   ];
 
-  // Modeling — one entry per photo. "url" should point to the site/campaign it ran on.
   const modelingPhotos = [
     { credit: "EightFive Studios", url: "http://eightfivestudios.com/" }
   ];
 
-  // Headshots — filenames should live in an /images folder next to index.html
   const headshotImages = [
     "Headshot 1.JPG",
     "Headshot 2.JPG",
     "Headshot 3.jpg",
     "Headshot 4.jpg"
   ];
-
-  /* ============================================================
-     Rendering — no need to edit below this line.
-     ============================================================ */
 
   function playIconSVG(){
     return '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
@@ -651,8 +605,8 @@
     el.innerHTML = items.map(v => `
       <a class="video-card" href="${v.url}" target="_blank" rel="noopener">
         <div class="video-thumb">
-          <div class="play-icon">${playIconSVG()}</div>
-          <div class="placeholder-label">Replace with YouTube thumbnail</div>
+          <img src="${v.thumb}" alt="${v.title}" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
+          <div class="play-icon" style="position:relative; z-index:1; background:rgba(0,0,0,0.35);">${playIconSVG()}</div>
         </div>
         <div class="video-meta">
           <h3>${v.title}</h3>
@@ -688,8 +642,6 @@
   renderVideoGrid('producing-grid', producingVideos);
   renderPhotoGrid(modelingPhotos);
   renderHeadshots(headshotImages);
-
-  /* ---------- tab switching ---------- */
 
   const buttons = document.querySelectorAll('nav.tabs button');
   const sections = document.querySelectorAll('main > section');
